@@ -115,7 +115,7 @@ def plot_decision_regions(X, y, classifier, resolution=0.02):
                     label=cl)
 
 
-lda = LDA(n_components=2)
+lda = LDA(n_components=1)
 X_train_lda = lda.fit_transform(X_train_std, y_train)
 
 
