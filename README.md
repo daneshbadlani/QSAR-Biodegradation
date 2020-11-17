@@ -9,6 +9,10 @@
 
 ## Feature Selection
 
+For feature selection we performed two methods: Random Forest, and Sequential Backwards Search (SBS).
+
+SBS is a greedy feature selection algorithm while random forest uses a more robust approach by measuring the impurity of each feature. See rf_selection.png and sbs.png for the results of each feature selection method.
+
 ## Train/Test Split, Scalers, and Hyperparameter Selection
 
 ### Train/Test Split
