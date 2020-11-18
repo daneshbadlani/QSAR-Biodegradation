@@ -5,6 +5,8 @@
 
 ## EDA
 
+This dataset contains 41 attributes and 1 target variable with 1055 rows. We binarized the target variable, replacing "NRB" and "RB" with 0 and 1 respectively. There are some missing values in the dataset, which we imputed by using the most frequent strategy. We tried both strategies such as the most frequent one as well as the mean but the results turned out to be the same for both of them.  
+
 ## Feature Extraction
 
 ## Feature Selection
