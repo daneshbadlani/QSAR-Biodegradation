@@ -5,7 +5,7 @@
 
 ## EDA
 
-This dataset contains 41 attributes and 1 target variable with 1055 rows. We binarized the target variable, replacing "NRB" and "RB" with 0 and 1 respectively. There are some missing values in the dataset, which we imputed by using the most frequent strategy. We tried both strategies such as the most frequent one as well as the mean but the results turned out to be the same for both of them. The correlation matrix shows highly positive correlation between SpMax_A and SpMax_L, SM6_L and SpMax_L, and SpMax_B and SM6_B while negative correlation between SpPosA_B and Mi.  
+This dataset contains 41 attributes and 1 target variable with 1055 rows. We binarized the target variable, replacing "NRB" and "RB" with 0 and 1 respectively. There are some missing values in the dataset, which we imputed by using the most frequent strategy. We tried both strategies such as the most frequent one as well as the mean but the results turned out to be the same for both of them. We also decided not to remove the missing values altogether because we would have lost around 30% of the values then. The correlation matrix shows highly positive correlation between SpMax_A and SpMax_L, SM6_L and SpMax_L, and SpMax_B and SM6_B while negative correlation between SpPosA_B and Mi.  
 
 ## Feature Extraction
 
