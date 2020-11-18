@@ -5,7 +5,7 @@
 
 ## EDA
 
-This dataset contains 41 attributes and 1 target variable with 1055 rows. We binarized the target variable, replacing "NRB" and "RB" with 0 and 1 respectively. There are some missing values in the dataset, which we imputed by using the most frequent strategy. We tried both strategies such as the most frequent one as well as the mean but the results turned out to be the same for both of them. We also decided not to remove the missing values altogether because we would have lost around 30% of the values then. The correlation matrix shows highly positive correlation between SpMax_A and SpMax_L, SM6_L and SpMax_L, and SpMax_B and SM6_B while negative correlation between SpPosA_B and Mi.  
+This dataset contains 41 attributes and 1 target variable with 1055 rows. We binarized the target variable, replacing "NRB" and "RB" with 0 and 1 respectively. There are some missing values in the dataset, which we imputed by using the mean strategy. We tried both strategies such as the most frequent one as well as the mean but the results turned out to be the same for both of them and mean strategy is more relevant here because the data is numerical. We also decided not to remove the missing values altogether because we would have lost around 30% of the values then. There was also the problem of class imbalance, i.e., 'NRB' values were almost double of 'RB' values. Hence, we tried both the strategies of upsampling and downsampling but ended up sticking with upsampling because we were able to get more data as well as better overall results. The correlation matrix shows highly positive correlation between SpMax_A and SpMax_L, SpMax_A and SM6_L, and SM6_L and SpMax_L while negative correlation between SdssC and Psi_i_A.  
 
 ## Feature Extraction
 
