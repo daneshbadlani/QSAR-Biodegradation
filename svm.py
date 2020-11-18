@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from sklearn.impute import SimpleImputer
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score
 from sklearn.preprocessing import StandardScaler, Normalizer
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from sklearn.svm import SVC
@@ -154,6 +154,16 @@ for X_train_gs, name in zip([X_train_std, X_train_lda, X_train_pca, X_train_kpca
     gs = gs.fit(X_train_gs, y_train)
     print("Accuracy:", gs.best_score_)
     print("Parameters:", gs.best_params_)
+    
+gs = GridSearchCV(estimator=SVC(),
+                param_grid=param_grid,
+                scoring='accuracy',
+                cv=2)
+
+scores = cross_val_score(gs, X_train, y_train,
+                        scoring='accuracy', cv=5)
+
+print("\n\nCV Accuracy: %.3f +/- %.3f" % (np.mean(scores), np.std(scores)))
 
 
 
