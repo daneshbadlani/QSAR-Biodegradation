@@ -44,6 +44,9 @@ Parameters: {'C': 1.0, 'gamma': 0.1, 'kernel': 'rbf'}
 Grid search for KPCA
 Accuracy: 0.6626064420584968
 Parameters: {'C': 0.0001, 'kernel': 'linear'}
+
+
+CV Accuracy: 0.860 +/- 0.019
 ```
 
 Although the results show that the highest accuracy was achieved without feature extraction (but not by much), the parameters returned suggest that the model would be overfit. A C value of 100 is very high and a gamma value of 0.01 is very low, which would imply that our model would be overfit to the training set. Since LDA had almost the same accuracy and more reasonable values for C and gamma, we chose to stick with LDA feature extraction for our final model.
