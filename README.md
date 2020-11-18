@@ -27,26 +27,26 @@ We selected the appropriate hyperparameters using the GridSearchCV object from t
 
 ```
 Grid search for No Feature Extraction
-Accuracy: 0.8781007034431692
-Parameters: {'C': 100.0, 'gamma': 0.01, 'kernel': 'rbf'}
+Accuracy: 0.923290553334736
+Parameters: {'C': 100.0, 'gamma': 0.1, 'kernel': 'rbf'}
 
 
 Grid search for LDA
-Accuracy: 0.8740096260644206
-Parameters: {'C': 10.0, 'gamma': 0.1, 'kernel': 'rbf'}
+Accuracy: 0.8813170629076372
+Parameters: {'C': 1.0, 'gamma': 1000.0, 'kernel': 'rbf'}
 
 
 Grid search for PCA
-Accuracy: 0.7534801925212884
-Parameters: {'C': 1.0, 'gamma': 0.1, 'kernel': 'rbf'}
+Accuracy: 0.7617189143698717
+Parameters: {'C': 1000.0, 'gamma': 1000.0, 'kernel': 'rbf'}
 
 
 Grid search for KPCA
-Accuracy: 0.6626064420584968
-Parameters: {'C': 0.0001, 'kernel': 'linear'}
+Accuracy: 0.8885545970965707
+Parameters: {'C': 50, 'gamma': 75, 'kernel': 'rbf'}
 
 
-CV Accuracy: 0.860 +/- 0.019
+CV Accuracy: 0.889 +/- 0.021
 ```
 
 Although the results show that the highest accuracy was achieved without feature extraction (but not by much), the parameters returned suggest that the model would be overfit. A C value of 100 is very high and a gamma value of 0.01 is very low, which would imply that our model would be overfit to the training set. Since LDA had almost the same accuracy and more reasonable values for C and gamma, we chose to stick with LDA feature extraction for our final model.
