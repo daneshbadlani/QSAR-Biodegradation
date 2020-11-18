@@ -62,6 +62,7 @@ df.columns = [
 
 #perform imputation to fill in missing data
 df['ready'] = df['ready'].replace(to_replace={"NRB":0, "RB":1})
+# df = df.fillna(df.mean())
 imr_frequent = SimpleImputer(missing_values=np.nan)
 imr_frequent = imr_frequent.fit(df[[i for i in list(df.columns) if i != "ready"]].values)
 df[[i for i in list(df.columns) if i != "ready"]] = pd.DataFrame(data=imr_frequent.transform(df[[i for i in list(df.columns) if i != "ready"]].values))
