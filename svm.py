@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 from sklearn.impute import SimpleImputer
 from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score
-from sklearn.preprocessing import StandardScaler, Normalizer
+from sklearn.preprocessing import StandardScaler, Normalizer, MinMaxScaler, MaxAbsScaler
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
@@ -91,10 +91,10 @@ y = df_upsampled['ready']
 #list of features in order of importance determined by SBS feature selection
 
 sbs_features = ['J_Dz(e)', 'nHM', 'F01[N-N]', 'F04[C-N]', 'NssssC', 'nCb-', 'C%', 'nCp',
-       'n0', 'F03[C-N]', 'SdssC', 'HyWi_B(m)', 'LOC', 'SM6_L', 'F03[C-0]',
-       'Mi', 'nN-N', 'nArN02', 'nCRX3', 'nCIR', 'B03[C-Cl]', 'N-073',
-       'SpMax_A', 'TI2_L', 'NCrt', 'C-026', 'F02[C-N]', 'SpMax_B(m)',
-       'Psi_i_A', 'SM6_B(m)', 'nArC00R']
+       'F03[C-N]', 'SdssC', 'HyWi_B(m)', 'LOC', 'SM6_L', 'F03[C-0]', 'Me',
+       'Mi', 'nN-N', 'nArN02', 'nCRX3', 'nCIR', 'B03[C-Cl]', 'SpMax_A',
+       'Psi_i_1d', 'B04[C-Br]', 'NCrt', 'C-026', 'nHDon', 'SpMax_B(m)',
+       'Psi_i_A', 'nN', 'SM6_B(m)']
 
 
 #list of features in order of importance determined by RF feature selection
@@ -185,10 +185,10 @@ scores = cross_val_score(gs, X_train, y_train,
 print("\n\nCV Accuracy: %.3f +/- %.3f" % (np.mean(scores), np.std(scores)))
 
 #Hyper parameters determined from previous grid search
-svm = SVC(C=10, kernel='rbf', gamma=0.1)
+svm = SVC(C=100, kernel='rbf', gamma=.1)
 
 #Calculate accuracy, precision, recall, and f1-score using each RF and SBS feature selection
-num_features = list(range(3, 41))
+num_features = list(range(2, 42))
 for name, features in zip(["SBS", "RF"], [sbs_features, rf_features]):
     print("\n\n" + name + " Feature Selection")
     accuracy_list = []
@@ -200,18 +200,15 @@ for name, features in zip(["SBS", "RF"], [sbs_features, rf_features]):
         #Code from https://stackoverflow.com/questions/40636514/selecting-pandas-dataframe-column-by-list
         X_train_new = X_train[X_train.columns.intersection(features[:num])]
         X_test_new = X_test[X_test.columns.intersection(features[:num])]
-        
-        X_train_norm = norm.fit_transform(X_train_new)
-        X_test_norm = norm.transform(X_test_new)
 
-        lda = LDA(n_components=1)
-        X_train_lda = lda.fit_transform(X_train_norm, y_train)
-        X_test_lda = lda.transform(X_test_norm)
+        #Apply standard scaler
+        X_train_std = stdsc.fit_transform(X_train_new)
+        X_test_std = stdsc.transform(X_test_new)
 
         print("\n\nNumber of features:", num)
             
-        svm.fit(X_train_lda, y_train)
-        y_pred = svm.predict(X_test_lda)
+        svm.fit(X_train_std, y_train)
+        y_pred = svm.predict(X_test_std)
         
         print("Accuracy:", accuracy_score(y_pred, y_test))
         print("Precision:", precision_score(y_pred, y_test))
