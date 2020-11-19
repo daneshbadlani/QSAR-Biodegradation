@@ -9,6 +9,8 @@ This dataset contains 41 attributes and 1 target variable with 1055 rows. We bin
 
 ## Feature Extraction
 
+We performed cross-validation grid search on three feature extraction methods such as Principal Component Analysis (PCA), Kernel Principal Component Analysis (KPCA) and Linear Discriminant Analysis (LDA) as well as without it to get the optimal combination of values (see results below). We used 1 component for each feature extraction methods since it has be at least 1 less than the number of target class, which is 2 here. For KPCA, we specified the kernel to be 'rbf' with gamma values of 15. We also normalized the data for LDA since it tends to assume that the data is normally distributed. LDA is also a more relevant feature extraction technique because it works better for supervised data, which is what we have here. 
+
 ## Feature Selection
 
 For feature selection we performed two methods: Random Forest, and Sequential Backwards Search (SBS).
