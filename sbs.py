@@ -159,7 +159,7 @@ class SBS():
         score = self.scoring(y_test, y_pred)
         return score
 
-svm = SVC()
+svm = SVC(C=100, kernel='rbf', gamma=.1)
 
 # selecting features
 sbs = SBS(svm, k_features=1)
