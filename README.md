@@ -62,3 +62,7 @@ Another important note is that not only did the accuracy of the model not sigini
 ### Scalers
 
 Since we decided to go without feature extraction, it was necessary to try several scalers. The four scalers we tried were: StandardScaler, MinMaxScaler, MaxAbsScaler, and Normalizer. They all performed relatively similarly with the StandardScaler performing slightly better than the rest. So, we stuck with the standard scaler for our final model.
+
+### Resources
+
+Mansouri, K., Ringsted, T., Ballabio, D., Todeschini, R., Consonni, V. (2013). Quantitative Structure - Activity Relationship models for ready biodegradability of chemicals. Journal of Chemical Information and Modeling, 53, 867-878
