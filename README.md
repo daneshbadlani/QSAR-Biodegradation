@@ -1,4 +1,4 @@
-# CSCI297-Test3
+# QSAR Biodegradation
 
 - Danesh Badlani
 - Sam Bluestone
